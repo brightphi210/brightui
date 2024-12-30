@@ -1,6 +1,6 @@
 {
   "name": "@brightphi210/brightui",
-  "version": "0.0.4",
+  "version": "0.0.8",
   "description": "A React TypeScript UI library for developers",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
