@@ -4,13 +4,15 @@ type ButtonProps = PropsWithChildren<{
   onClick?: () => void;
   color: 'blue' | 'red' | 'white' | 'black' | 'green' | 'yellow';
   size: 'sm' | 'md' | 'lg';
+  fontWeight: 'semiBold' | 'bold' | 'light' | 'medium' ;
 }>;
 
 const Button = ({
   children,
   onClick,
-  color = 'blue',
+  color = 'white',
   size = 'md',
+  fontWeight = 'light'
 }: ButtonProps) => {
   const colorStyles: Record<ButtonProps['color'], CSSProperties> = {
     blue: {
@@ -55,16 +57,24 @@ const Button = ({
     },
   };
 
+  const weightStyle: Record<ButtonProps['fontWeight'], CSSProperties> = {
+    light: { fontWeight: '400' },
+    medium: { fontWeight: '550' },
+    semiBold: { fontWeight: '650' },
+    bold: { fontWeight: '750' },
+  }
+
   return (
     <button
       style={{
         outline: 'none',
         border: 'none',
         cursor: 'pointer',
-        borderRadius: '0.5rem',
+        borderRadius: '5px',
         transition: 'background-color 0.3s ease, transform 0.2s ease',
         ...colorStyles[color],
         ...sizeStyles[size],
+        ...weightStyle[fontWeight]
       }}
       onClick={onClick}
       onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}

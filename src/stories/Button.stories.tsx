@@ -25,6 +25,13 @@ const meta: Meta<StoryProps> = {
                 type: 'select',
             }
         },  
+
+        fontWeight: {
+            options: ['light', 'medium', 'semiBold', 'bold'],
+            control: {
+                type: 'select',
+            }
+        },
     }
 };
 
@@ -34,11 +41,12 @@ export default meta;
 
 // =========== Story, this is where i declare type for each individual item or button representation
 type Story = StoryObj<StoryProps>;
-export const Primary: Story = {
+export const Color: Story = {
     args: {
         buttonText: 'Click Me',
-        color: 'blue',
+        color: 'white',
         size: 'md',
+        fontWeight: 'light'
     },
 
     render: ({buttonText, ...args}) =>{
