@@ -7,3 +7,5 @@ export declare const Info: Story;
 export declare const Success: Story;
 export declare const Warning: Story;
 export declare const Error: Story;
+export declare const CustomStyle: Story;
+export declare const Closable: Story;

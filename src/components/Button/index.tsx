@@ -7,6 +7,7 @@ export interface ButtonProps {
   fontWeight: 'light' | 'medium' | 'semibold' | 'bold';
   className?: string;
   children: React.ReactNode;
+  disabled?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -16,6 +17,7 @@ const Button: React.FC<ButtonProps> = ({
   size = 'md',
   fontWeight = 'light',
   className = '',
+  disabled = false,
 }) => {
   const baseClasses = 'outline-none border-none cursor-pointer rounded transition-all duration-300 ease-in-out transform active:scale-95';
   
@@ -47,6 +49,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={classes}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </button>

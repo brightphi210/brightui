@@ -48,7 +48,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className={`bg-white rounded-lg shadow-xl w-full max-w-[50%] mx-4 ${className}`}
+            className={`bg-white text-black rounded-lg shadow-xl 2xl:w-[40%] xl:w-[35%] lg:w-[40%] md:w-[80%] w-[95%]  mx-4 ${className}`}
           >
             <div className="flex items-center justify-between p-4 border-b">
               <h2 className="text-lg font-semibold">{title}</h2>

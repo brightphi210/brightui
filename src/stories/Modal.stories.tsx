@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import Modal from '../components/Modal';
 import Button from '../components/Button';
@@ -39,6 +39,7 @@ export const Default: Story = {
   args: {
     title: 'Example Modal',
     children: <p>This is the content of the modal. You can put any React components or HTML here.</p>,
+    className: "w-[100px]"
   },
 };
 

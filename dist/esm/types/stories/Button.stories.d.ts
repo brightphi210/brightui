@@ -1,10 +1,7 @@
-import Button from "../components/Button";
 import { Meta, StoryObj } from '@storybook/react';
-import { ComponentProps } from "react";
-type StoryProps = ComponentProps<typeof Button> & {
-    buttonText: string;
-};
-declare const meta: Meta<StoryProps>;
+import Button from '../components/Button';
+declare const meta: Meta<typeof Button>;
 export default meta;
-type Story = StoryObj<StoryProps>;
-export declare const Color: Story;
+type Story = StoryObj<typeof Button>;
+export declare const Default: Story;
+export declare const CustomClass: Story;

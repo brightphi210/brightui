@@ -20,6 +20,9 @@ const meta: Meta<typeof Button> = {
     className: {
       control: 'text',
     },
+    disabled: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -33,7 +36,8 @@ export const Default: Story = {
     color: "blue",
     size: 'md',
     fontWeight: 'medium',
-    className: "border border-neutral-200 text-green"
+    className: "border border-neutral-200 text-green",
+    disabled: false,
   },
 };
 
@@ -41,6 +45,13 @@ export const CustomClass: Story = {
   args: {
     ...Default.args,
     className: "shadow-lg hover:shadow-xl bg-yellow-200 text-pink-200",
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    ...Default.args,
+    disabled: true,
   },
 };
 
