@@ -10,6 +10,8 @@ const meta: Meta<typeof Alert> = {
       options: ['info', 'success', 'warning', 'error'],
     },
     message: { control: 'text' },
+    className: { control: 'text' },
+    onClose: { action: 'closed' },
   },
 };
 
@@ -28,6 +30,7 @@ export const Success: Story = {
   args: {
     type: 'success',
     message: 'Operation completed successfully!',
+    className: "bg-neutral-400 text-white border border-neutral-700"
   },
 };
 
@@ -42,6 +45,22 @@ export const Error: Story = {
   args: {
     type: 'error',
     message: 'An error occurred. Please try again.',
+  },
+};
+
+export const CustomStyle: Story = {
+  args: {
+    type: 'info',
+    message: 'This alert has custom styling.',
+    className: 'bg-purple-100 text-purple-800',
+  },
+};
+
+export const Closable: Story = {
+  args: {
+    type: 'success',
+    message: 'This alert can be closed.',
+    onClose: () => console.log('Alert closed'),
   },
 };
 

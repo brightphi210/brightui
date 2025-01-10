@@ -1,84 +1,52 @@
-import { CSSProperties, PropsWithChildren } from 'react';
+import React from 'react';
 
-type ButtonProps = PropsWithChildren<{
+export interface ButtonProps {
   onClick?: () => void;
   color: 'blue' | 'red' | 'white' | 'black' | 'green' | 'yellow';
   size: 'sm' | 'md' | 'lg';
-  fontWeight: 'semiBold' | 'bold' | 'light' | 'medium' ;
-}>;
+  fontWeight: 'light' | 'medium' | 'semibold' | 'bold';
+  className?: string;
+  children: React.ReactNode;
+}
 
-const Button = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
   color = 'white',
   size = 'md',
-  fontWeight = 'light'
-}: ButtonProps) => {
-  const colorStyles: Record<ButtonProps['color'], CSSProperties> = {
-    blue: {
-      backgroundColor: '#3b82f6', // DodgerBlue
-      color: '#FFFFFF',
-    },
-    red: {
-      backgroundColor: '#ef4444', // Tomato
-      color: '#FFFFFF',
-    },
-    white: {
-      backgroundColor: '#FFFFFF',
-      color: '#000000',
-      border: '1px solid #ccc',
-    },
-    black: {
-      backgroundColor: '#333333',
-      color: '#FFFFFF',
-    },
-    green: {
-      backgroundColor: '#10b981', // LimeGreen
-      color: '#FFFFFF',
-    },
-    yellow: {
-      backgroundColor: '#f59e0b', // Gold
-      color: '#333333',
-    },
+  fontWeight = 'light',
+  className = '',
+}) => {
+  const baseClasses = 'outline-none border-none cursor-pointer rounded transition-all duration-300 ease-in-out transform active:scale-95';
+  
+  const colorClasses = {
+    blue: 'bg-blue-500 text-white',
+    red: 'bg-red-500 text-white',
+    white: 'bg-white text-black border border-gray-300',
+    black: 'bg-gray-800 text-white',
+    green: 'bg-green-500 text-white',
+    yellow: 'bg-yellow-500 text-gray-800',
   };
 
-  const sizeStyles: Record<ButtonProps['size'], CSSProperties> = {
-    sm: {
-      padding: '0.5rem 1rem',
-      fontSize: '0.875rem',
-    },
-    md: {
-      padding: '0.75rem 1.5rem',
-      fontSize: '1rem',
-    },
-    lg: {
-      padding: '1rem 2rem',
-      fontSize: '1.25rem',
-    },
+  const sizeClasses = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg',
   };
 
-  const weightStyle: Record<ButtonProps['fontWeight'], CSSProperties> = {
-    light: { fontWeight: '400' },
-    medium: { fontWeight: '550' },
-    semiBold: { fontWeight: '650' },
-    bold: { fontWeight: '750' },
-  }
+  const fontWeightClasses = {
+    light: 'font-light',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  };
+
+  const classes = `${baseClasses} ${colorClasses[color]} ${sizeClasses[size]} ${fontWeightClasses[fontWeight]} ${className}`;
 
   return (
     <button
-      style={{
-        outline: 'none',
-        border: 'none',
-        cursor: 'pointer',
-        borderRadius: '5px',
-        transition: 'background-color 0.3s ease, transform 0.2s ease',
-        ...colorStyles[color],
-        ...sizeStyles[size],
-        ...weightStyle[fontWeight]
-      }}
+      className={classes}
       onClick={onClick}
-      onMouseDown={(e) => e.currentTarget.style.transform = 'scale(0.95)'}
-      onMouseUp={(e) => e.currentTarget.style.transform = 'scale(1)'}
     >
       {children}
     </button>

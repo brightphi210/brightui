@@ -1,55 +1,46 @@
+import { Meta, StoryObj } from '@storybook/react';
+import Button from '../components/Button';
 
-import Button from "../components/Button";
-import {Meta, StoryObj} from '@storybook/react'
-import { ComponentProps } from "react";
-
-type StoryProps = ComponentProps<typeof Button> & {
-    buttonText : string
-}
-
-
-// =========== Meta Properties, where i render my components Button and also display how the button will be controlled by the argTypes
-const meta: Meta<StoryProps> = {
-    component: Button,
-    argTypes: {
-        color: {
-            options: ['red','blue', 'green', 'yellow', 'black', 'white'],
-            control: {
-                type: 'select',
-            }
-        },
-
-        size: {
-            options: ['sm','md','lg'],
-            control: {
-                type: 'select',
-            }
-        },  
-
-        fontWeight: {
-            options: ['light', 'medium', 'semiBold', 'bold'],
-            control: {
-                type: 'select',
-            }
-        },
-    }
+const meta: Meta<typeof Button> = {
+  title: 'Components/Button',
+  component: Button,
+  argTypes: {
+    color: {
+      control: 'select',
+      options: ['blue', 'red', 'white', 'black', 'green', 'yellow'],
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
+    fontWeight: {
+      control: 'select',
+      options: ['light', 'medium', 'semibold', 'bold'],
+    },
+    className: {
+      control: 'text',
+    },
+  },
 };
 
 export default meta;
 
+type Story = StoryObj<typeof Button>;
 
+export const Default: Story = {
+  args: {
+    children: 'Click Me',
+    color: "blue",
+    size: 'md',
+    fontWeight: 'medium',
+    className: "border border-neutral-200 text-green"
+  },
+};
 
-// =========== Story, this is where i declare type for each individual item or button representation
-type Story = StoryObj<StoryProps>;
-export const Color: Story = {
-    args: {
-        buttonText: 'Click Me',
-        color: 'white',
-        size: 'md',
-        fontWeight: 'light'
-    },
+export const CustomClass: Story = {
+  args: {
+    ...Default.args,
+    className: "shadow-lg hover:shadow-xl bg-yellow-200 text-pink-200",
+  },
+};
 
-    render: ({buttonText, ...args}) =>{
-        return <Button {...args}>{buttonText}</Button>
-    }
-}
