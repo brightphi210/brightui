@@ -1,7 +1,7 @@
 # Beta UI
 
 <div align="center">
-  <img src="./BetaUi.jpg" alt="Beta UI Logo" width="200"/>
+  <img src="./BetaUi.png" alt="Beta UI Logo" width="200"/>
   
   A modern UI component library built with React and Next.js
 </div>
