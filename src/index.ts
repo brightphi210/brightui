@@ -6,5 +6,7 @@ export { default as Modal } from './components/Modal'
 export { default as Input } from './components/Input'
 export { default as Select } from './components/Select'
 export { default as Loading } from './components/Loading'
+export { default as Accordion } from './components/Accordion'
+export { default as Swiper } from './components/Swiper'
 
 export type { AlertProps } from './components/Alert/';
