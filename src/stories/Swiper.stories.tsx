@@ -96,14 +96,12 @@ export const CustomStyle: Story = {
 export const CustomResponsive: Story = {
   args: {
     ...defaultArgs,
-
     slidesPerView: {
       mobile: 1,
       tablet: 2,
       laptop: 2,
       desktop: 3,
     },
-
     autoplay: true,
     autoplayInterval: 2000
   },
