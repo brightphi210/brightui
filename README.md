@@ -1,7 +1,7 @@
 # Beta UI
 
 <div align="center">
-  <img src="https://sjc.microlink.io/bHZa22dN7o5ByAxxIf2hlrKFAeW8GUGJUiBHLXbNkBZ1pLXPMs_v-Uz7dXOlObSqX-DNQt0QxnGW0puaTVFQaQ.jpeg" alt="Beta UI Logo" width="200"/>
+  <img src="./BetaUi.jpg" alt="Beta UI Logo" width="200"/>
   
   A modern UI component library built with React and Next.js
 </div>
@@ -23,7 +23,30 @@ Beta UI is a sleek, modern UI component library designed to help developers buil
 
 ### Installation
 
-```bash
+```jsx
 npm install @brightcodeui/beta-ui
 # or
 yarn add @brightcodeui/beta-ui
+```
+
+
+### Usage
+
+```jsx
+import { Button } from '@brightcodeui/beta-ui';
+
+function App() {
+  return (
+    <div>
+      <Button variant="red">Click Me</Button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+## 📖 Documentation
+
+For detailed usage and component examples, visit the [Beta UI Website](https://betaui.vercel.app/).
