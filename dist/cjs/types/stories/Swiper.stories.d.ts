@@ -1,0 +1,12 @@
+import { Meta, StoryObj } from '@storybook/react';
+import Swiper from '../components/Swiper';
+declare const meta: Meta<typeof Swiper>;
+export default meta;
+type Story = StoryObj<typeof Swiper>;
+export declare const Default: Story;
+export declare const Autoplay: Story;
+export declare const WithoutNavigation: Story;
+export declare const WithoutPagination: Story;
+export declare const CustomInterval: Story;
+export declare const CustomStyle: Story;
+export declare const CustomResponsive: Story;

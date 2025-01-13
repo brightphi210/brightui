@@ -5,3 +5,4 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 export declare const Default: Story;
 export declare const CustomClass: Story;
+export declare const Disabled: Story;

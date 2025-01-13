@@ -6,6 +6,7 @@ export interface ButtonProps {
     fontWeight: 'light' | 'medium' | 'semibold' | 'bold';
     className?: string;
     children: React.ReactNode;
+    disabled?: boolean;
 }
 declare const Button: React.FC<ButtonProps>;
 export default Button;

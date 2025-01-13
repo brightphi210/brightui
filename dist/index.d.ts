@@ -8,6 +8,7 @@ interface ButtonProps {
     fontWeight: 'light' | 'medium' | 'semibold' | 'bold';
     className?: string;
     children: React__default.ReactNode;
+    disabled?: boolean;
 }
 declare const Button: React__default.FC<ButtonProps>;
 
@@ -35,4 +36,62 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-export { Alert, type AlertProps, Button, Input, Modal };
+interface SelectOption {
+    value: string;
+    label: string;
+}
+interface SelectProps {
+    options: SelectOption[];
+    value?: string;
+    onChange?: (value: string) => void;
+    placeholder?: string;
+    className?: string;
+    disabled?: boolean;
+}
+declare const Select: React__default.FC<SelectProps>;
+
+interface LoadingProps {
+    type: 'spinner' | 'dots' | 'bar' | 'pulse' | 'ring';
+    size?: 'sm' | 'md' | 'lg';
+    color?: string;
+    className?: string;
+}
+declare const Loading: React__default.FC<LoadingProps>;
+
+interface AccordionProps {
+    title: string;
+    content: string;
+    type?: 'arrow' | 'plus';
+    className?: string;
+}
+declare const Accordion: React__default.FC<AccordionProps>;
+
+interface SwiperProps {
+    slides: React__default.ReactNode[];
+    autoplay?: boolean;
+    autoplayInterval?: number;
+    showNavigation?: boolean;
+    showPagination?: boolean;
+    className?: string;
+    slidesPerView?: {
+        mobile?: number;
+        tablet?: number;
+        laptop?: number;
+        desktop?: number;
+    };
+}
+declare const Swiper: React__default.FC<SwiperProps>;
+
+interface CardProps {
+    imageSrc?: string;
+    title?: string;
+    description?: string;
+    price?: string;
+    buttonText?: string;
+    onButtonClick?: () => void;
+    className?: string;
+    children?: React__default.ReactNode;
+}
+declare const Card: React__default.FC<CardProps>;
+
+export { Accordion, Alert, type AlertProps, Button, Card, Input, Loading, Modal, Select, Swiper };
