@@ -1,6 +1,8 @@
 import type React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, X, ExternalLink } from "lucide-react";
+import { createPortal } from 'react-dom';
+
 
 export interface SuccessfulTransactionModalProps {
   isOpen: boolean;
@@ -19,7 +21,7 @@ const SuccessfulTransactionModal: React.FC<SuccessfulTransactionModalProps> = ({
   const textColor = theme === "light" ? "text-neutral-900" : "text-neutral-100";
   const borderColor = theme === "light" ? "border-neutral-200" : "border-neutral-700";
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -75,7 +77,8 @@ const SuccessfulTransactionModal: React.FC<SuccessfulTransactionModalProps> = ({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

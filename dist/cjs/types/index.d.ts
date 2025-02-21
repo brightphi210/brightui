@@ -8,4 +8,7 @@ export { default as Loading } from './components/Loading';
 export { default as Accordion } from './components/Accordion';
 export { default as Swiper } from './components/Swiper';
 export { default as Card } from './components/Card';
+export { default as Avatar } from './components/Avatar';
+export { default as WalletConnection } from './components/WalletConnection';
+export { default as SuccessfulTransactionModal } from './components/SuccessfulTransactionModal';
 export type { AlertProps } from './components/Alert/';

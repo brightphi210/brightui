@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import Avatar from "../components/Avatar";
+declare const meta: Meta<typeof Avatar>;
+export default meta;
+type Story = StoryObj<typeof Avatar>;
+export declare const Default: Story;
+export declare const WithInitials: Story;
+export declare const WithBadge: Story;
+export declare const Sizes: Story;
+export declare const GroupOfAvatars: Story;
+export declare const StackedAvatars: Story;
+export declare const AvatarWithBadges: Story;
+export declare const CustomStyle: Story;

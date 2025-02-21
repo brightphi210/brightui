@@ -94,4 +94,31 @@ interface CardProps {
 }
 declare const Card: React__default.FC<CardProps>;
 
-export { Accordion, Alert, type AlertProps, Button, Card, Input, Loading, Modal, Select, Swiper };
+interface AvatarProps {
+    src?: string;
+    name?: string;
+    size?: "xs" | "sm" | "md" | "lg" | "xl";
+    badge?: "online" | "offline" | "away";
+    className?: string;
+}
+declare const Avatar: React__default.FC<AvatarProps>;
+
+interface WalletConnectionModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onConnect: (walletType: string) => Promise<string>;
+    onDisconnect: () => void;
+    theme?: "light" | "dark";
+    accentColor?: string;
+}
+declare const WalletConnection: React__default.FC<WalletConnectionModalProps>;
+
+interface SuccessfulTransactionModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    transactionHash: string;
+    theme?: "light" | "dark";
+}
+declare const SuccessfulTransactionModal: React__default.FC<SuccessfulTransactionModalProps>;
+
+export { Accordion, Alert, type AlertProps, Avatar, Button, Card, Input, Loading, Modal, Select, SuccessfulTransactionModal, Swiper, WalletConnection };

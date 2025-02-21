@@ -1,8 +1,9 @@
-"use client"
 
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Wallet, Coins, CreditCard, X } from 'lucide-react'
+import { createPortal } from 'react-dom';
+
 
 export interface WalletConnectionModalProps {
   isOpen: boolean
@@ -69,7 +70,7 @@ const WalletConnection: React.FC<WalletConnectionModalProps> = ({
   const borderColor = theme === "light" ? "border-neutral-200" : "border-neutral-700"
   const buttonBgColor = theme === "light" ? "bg-neutral-100 hover:bg-neutral-200" : "bg-neutral-800 hover:bg-neutral-700"
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -154,7 +155,8 @@ const WalletConnection: React.FC<WalletConnectionModalProps> = ({
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
 
