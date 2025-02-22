@@ -11,4 +11,6 @@ export { default as Card } from './components/Card';
 export { default as Avatar } from './components/Avatar';
 export { default as WalletConnection } from './components/WalletConnection';
 export { default as SuccessfulTransactionModal } from './components/SuccessfulTransactionModal';
+export { default as NFTCard } from './components/NFTCard';
+export { default as TokenSwap } from './components/TokenSwap';
 export type { AlertProps } from './components/Alert/';

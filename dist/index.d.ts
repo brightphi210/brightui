@@ -121,4 +121,28 @@ interface SuccessfulTransactionModalProps {
 }
 declare const SuccessfulTransactionModal: React__default.FC<SuccessfulTransactionModalProps>;
 
-export { Accordion, Alert, type AlertProps, Avatar, Button, Card, Input, Loading, Modal, Select, SuccessfulTransactionModal, Swiper, WalletConnection };
+interface NFTCardProps {
+    imageSrc: string;
+    title: string;
+    creator: string;
+    price: string;
+    likes?: number;
+    onBuyClick?: () => void;
+    className?: string;
+    theme?: "light" | "dark";
+}
+declare const NFTCard: React__default.FC<NFTCardProps>;
+
+interface Token {
+    symbol: string;
+    balance: number;
+}
+interface TokenSwapProps {
+    tokens: Token[];
+    exchangeRates: Record<string, number>;
+    onSwap?: (fromToken: string, toToken: string, amount: number) => void;
+    theme?: "light" | "dark";
+}
+declare const TokenSwap: React__default.FC<TokenSwapProps>;
+
+export { Accordion, Alert, type AlertProps, Avatar, Button, Card, Input, Loading, Modal, NFTCard, Select, SuccessfulTransactionModal, Swiper, TokenSwap, WalletConnection };

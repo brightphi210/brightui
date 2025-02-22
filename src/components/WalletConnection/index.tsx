@@ -91,7 +91,7 @@ const WalletConnection: React.FC<WalletConnectionModalProps> = ({
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={onClose}
-                className={`absolute top-4 right-4 p-2 rounded-full ${textColor} hover:bg-neutral-100 transition-colors`}
+                className={`absolute top-4 right-4 p-2 rounded-full ${textColor} hover:bg-neutral-100 hover:text-neutral-600 transition-colors`}
               >
                 <X className="h-5 w-5" />
               </motion.button>

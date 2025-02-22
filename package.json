@@ -1,6 +1,6 @@
 {
   "name": "@brightcodeui/beta-ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A TypeScript UI Component library for developers, Supports React JS, Next JS, Angular JS etc.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

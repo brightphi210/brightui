@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({
   children,
 }) => {
   return (
-    <div className={`max-w-sm rounded overflow-hidden shadow-lg ${className}`}>
+    <div className={`max-w-sm rounded overflow-hidden shadow-lg bg-white ${className}`}>
       {imageSrc && (
         <img className="w-full h-48 object-cover" src={imageSrc} alt={title || 'Card Image'} />
       )}
