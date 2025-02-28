@@ -32,7 +32,7 @@ const NFTCard: React.FC<NFTCardProps> = ({
   const tagTextColor = theme === "light" ? "text-gray-700" : "text-gray-300"
 
   return (
-    <div className={`max-w-sm rounded-xl overflow-hidden shadow-lg ${bgColor} ${className}`}>
+    <div className={`rounded-xl overflow-hidden shadow-lg ${bgColor} ${className}`}>
       <div className="relative">
         <img
           className="w-full h-64 object-cover"

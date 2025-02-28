@@ -27,7 +27,8 @@ export const Default: Story = {
     creator: "ArtisticMind",
     price: "0.5 ETH",
     likes: 23,
-    theme: "light",
+    theme: "dark",
+    className: "w-[20%]"
   },
 }
 
