@@ -14,5 +14,6 @@ export { default as WalletConnection } from './components/WalletConnection'
 export { default as SuccessfulTransactionModal } from './components/SuccessfulTransactionModal'
 export { default as NFTCard } from './components/NFTCard'
 export { default as TokenSwap } from './components/TokenSwap'
+export { default as Toast } from './components/Toast'
 
 export type { AlertProps } from './components/Alert/';
