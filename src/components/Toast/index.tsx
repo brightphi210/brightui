@@ -129,12 +129,12 @@ const Toast: React.FC<ToastProps> = ({
     if (type === "custom" && icon) return icon
 
     const iconMap = {
-      success: <FaCheckCircle className="w-5 h-5" />,
-      error: <FaExclamationCircle className="w-5 h-5" />,
-      warning: <FaExclamationTriangle className="w-5 h-5" />,
-      info: <FaInfoCircle className="w-5 h-5" />,
-      loading: <FaSpinner className="w-5 h-5 animate-spin" />,
-      custom: <FaInfoCircle className="w-5 h-5" />,
+      success: <FaCheckCircle className="text-base" />,
+      error: <FaExclamationCircle className="text-base" />,
+      warning: <FaExclamationTriangle className="text-base" />,
+      info: <FaInfoCircle className="text-base" />,
+      loading: <FaSpinner className="text-base animate-spin" />,
+      custom: <FaInfoCircle className="text-base" />,
     }
 
     return iconMap[type]
@@ -223,7 +223,7 @@ const Toast: React.FC<ToastProps> = ({
         ${className}
       `}
       style={{
-        maxWidth: "100%", // Make it responsive
+        maxWidth: "100%",
         width: "fit-content",
         minWidth: "300px",
       }}
@@ -232,11 +232,11 @@ const Toast: React.FC<ToastProps> = ({
         className={`
           flex flex-col rounded-md shadow-lg 
           ${getTypeStyles()}
-          overflow-hidden max-sm:justify-center max-sm:m-auto max !max-sm:w-[95%]
+          overflow-hidden max-sm:justify-center max-sm:m-auto max !max-sm:w-[99%]
         `}
       >
         <div className="flex items-center p-3">
-          <div className="flex-shrink-0 mr-3">{getIcon()}</div>
+          <div className="flex-shrink-0 mr-2">{getIcon()}</div>
           <div className="flex-grow mr-2">
             <p className="text-sm font-medium">{message}</p>
           </div>
@@ -245,7 +245,7 @@ const Toast: React.FC<ToastProps> = ({
             className="flex-shrink-0 p-1 rounded-full hover:bg-black hover:bg-opacity-10 transition-colors"
             aria-label="Close"
           >
-            <FaTimes className="w-4 h-4" />
+            <FaTimes className="text-sm" />
           </button>
         </div>
 

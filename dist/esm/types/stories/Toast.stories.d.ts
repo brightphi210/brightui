@@ -1,0 +1,16 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import ToastButton from "../components/ToastButton";
+declare const meta: Meta<typeof ToastButton>;
+export default meta;
+type Story = StoryObj<typeof ToastButton>;
+export declare const Success: Story;
+export declare const Error: Story;
+export declare const Warning: Story;
+export declare const Info: Story;
+export declare const Loading: Story;
+export declare const Custom: Story;
+export declare const DarkTheme: Story;
+export declare const BottomRight: Story;
+export declare const TopCenter: Story;
+export declare const PersistentToast: Story;
+export declare const LongDuration: Story;
