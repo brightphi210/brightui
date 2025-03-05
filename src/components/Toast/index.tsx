@@ -57,7 +57,7 @@ const Toast: React.FC<ToastProps> = ({
   icon,
   onClose,
   className = "",
-  isVisible = true,
+  isVisible = false,
 }) => {
   const [isShowing, setIsShowing] = useState(isVisible)
   const [isExiting, setIsExiting] = useState(false)
@@ -71,15 +71,33 @@ const Toast: React.FC<ToastProps> = ({
       setIsShowing(true)
       setIsExiting(false)
       setProgress(100)
+      startTimeRef.current = Date.now() // Reset the timer when showing
     } else if (!isVisible && isShowing && !isExiting) {
       handleDismiss()
     }
-  }, [isVisible, isShowing, isExiting]) // Added isShowing and isExiting as dependencies
+  }, [isVisible]) // Only depend on isVisible prop, not internal state
+
+  const handleDismiss = () => {
+    if (animationFrameRef.current !== null) {
+      cancelAnimationFrame(animationFrameRef.current)
+      animationFrameRef.current = null // Reset the ref
+    }
+
+    setIsExiting(true)
+    // Wait for exit animation to complete
+    setTimeout(() => {
+      setIsShowing(false)
+      startTimeRef.current = null // Reset the timer reference
+      if (onClose) onClose()
+    }, 300)
+  }
 
   // Auto-dismiss and progress bar logic
   useEffect(() => {
     if (duration > 0 && isShowing && !isExiting) {
-      startTimeRef.current = Date.now()
+      if (startTimeRef.current === null) {
+        startTimeRef.current = Date.now()
+      }
 
       const updateProgress = () => {
         if (startTimeRef.current === null) return
@@ -102,23 +120,11 @@ const Toast: React.FC<ToastProps> = ({
       return () => {
         if (animationFrameRef.current !== null) {
           cancelAnimationFrame(animationFrameRef.current)
+          animationFrameRef.current = null
         }
       }
     }
-  }, [duration, isShowing, isExiting]) // Added isExiting as dependency
-
-  const handleDismiss = () => {
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current)
-    }
-
-    setIsExiting(true)
-    // Wait for exit animation to complete
-    setTimeout(() => {
-      setIsShowing(false)
-      if (onClose) onClose()
-    }, 300)
-  }
+  }, [duration, isShowing, isExiting, handleDismiss]) 
 
   if (!isShowing) {
     return null
@@ -177,19 +183,20 @@ const Toast: React.FC<ToastProps> = ({
     return progressColors[type]
   }
 
-  // Position-based styling
-  const getPositionStyles = () => {
-    const positionStyles = {
-      "top-right": "top-4 right-4 max-sm:top-3 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2",
-      "top-left": "top-4 left-4 max-sm:top-3 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2",
-      "bottom-right": "bottom-4 right-4 max-sm:top-3 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2",
-      "bottom-left": "bottom-4 left-4 max-sm:top-3 max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:-translate-y-1/2",
-      "top-center": "top-4 left-1/2 -translate-x-1/2 max-sm:top-3 max-sm:-translate-y-1/2",
-      "bottom-center": "bottom-4 left-1/2 -translate-x-1/2 max-sm:top-3 max-sm:-translate-y-1/2",
-    }
-  
-    return positionStyles[position]
-  }
+ // Position-based styling
+ const getPositionStyles = () => {
+  const positionStyles = {
+    "top-right": "top-4 right-4 max-sm:left-1/2 max-sm:right-auto max-sm:-translate-x-1/2 max-sm:top-4",
+    "top-left": "top-4 left-4 max-sm:right-0 max-sm:left-0 max-sm:m-auto max-sm:-translate-x-1/2 max-sm:top-4",
+    "bottom-right": "bottom-4 right-4 max-sm:right-0 max-sm:left-0 max-sm:m-auto max-sm:-translate-x-1/2 max-sm:top-4",
+    "bottom-left": "bottom-4 left-4 max-sm:right-0 max-sm:left-0 max-sm:m-auto max-sm:-translate-x-1/2 max-sm:top-4",
+    "top-center": "top-4 left-1/2 -translate-x-1/2",
+    "bottom-center": "bottom-4 left-1/2 -translate-x-1/2",
+  };
+
+
+  return positionStyles[position]
+}
 
   // Animation classes
   const getAnimationClasses = () => {

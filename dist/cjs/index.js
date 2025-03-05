@@ -10847,7 +10847,7 @@ const TokenSwap = ({ tokens, exchangeRates, onSwap, theme = "light" }) => {
     return (jsxRuntime.jsxs("div", { className: `max-w-md p-6 rounded-xl shadow-lg ${bgColor} ${textColor}`, children: [jsxRuntime.jsx("h2", { className: "text-2xl font-bold mb-4", children: "Token Swap" }), jsxRuntime.jsxs("div", { className: "mb-4", children: [jsxRuntime.jsx("label", { className: "block text-sm mb-2", children: "From" }), jsxRuntime.jsxs("div", { className: "flex items-center border rounded p-2", children: [getTokenIcon(fromToken), jsxRuntime.jsx("select", { value: fromToken, onChange: (e) => setFromToken(e.target.value), className: "ml-3 bg-transparent focus:outline-none p-1", children: tokens.map((token) => (jsxRuntime.jsx("option", { value: token.symbol, children: token.symbol }, token.symbol))) }), jsxRuntime.jsx("input", { type: "number", min: "0", max: getFromBalance(), value: amount, onChange: (e) => setAmount(parseFloat(e.target.value)), className: "flex-grow ml-3 bg-transparent focus:outline-none p-1", placeholder: "Enter amount" })] }), jsxRuntime.jsxs("p", { className: "text-xs mt-2", children: ["Balance: ", getFromBalance(), " ", fromToken.toUpperCase()] })] }), jsxRuntime.jsx("div", { className: "text-center my-4 flex justify-center m-auto", children: jsxRuntime.jsx(AiOutlineSwap, { className: "w-6 h-6 m-auto text-blue-500" }) }), jsxRuntime.jsxs("div", { className: "mb-4", children: [jsxRuntime.jsx("label", { className: "block text-sm mb-2", children: "To" }), jsxRuntime.jsxs("div", { className: "flex items-center border rounded p-2", children: [getTokenIcon(toToken), jsxRuntime.jsx("select", { value: toToken, onChange: (e) => setToToken(e.target.value), className: "ml-3 bg-transparent focus:outline-none p-1", children: tokens.map((token) => (jsxRuntime.jsx("option", { value: token.symbol, children: token.symbol }, token.symbol))) }), jsxRuntime.jsx("input", { type: "text", value: (amount * getExchangeRate()).toFixed(6), disabled: true, className: "flex-grow ml-3 bg-transparent focus:outline-none p-1" })] }), jsxRuntime.jsxs("p", { className: "text-xs mt-2", children: ["Balance: ", getToBalance(), " ", toToken.toUpperCase()] })] }), jsxRuntime.jsxs("button", { onClick: handleSwap, disabled: amount <= 0 || amount > getFromBalance(), className: `${buttonBgColor} text-white font-bold py-2 px-4 rounded-full w-full transition duration-300 ease-in-out disabled:bg-gray-400`, children: ["Swap ", fromToken.toUpperCase(), " to ", toToken.toUpperCase()] })] }));
 };
 
-const Toast = ({ type, message, duration = 3000, theme = "light", position = "top-right", icon, onClose, className = "", isVisible = true, }) => {
+const Toast = ({ type, message, duration = 3000, theme = "light", position = "top-right", icon, onClose, className = "", isVisible = false, }) => {
     const [isShowing, setIsShowing] = React.useState(isVisible);
     const [isExiting, setIsExiting] = React.useState(false);
     const [progress, setProgress] = React.useState(100);
@@ -10859,15 +10859,32 @@ const Toast = ({ type, message, duration = 3000, theme = "light", position = "to
             setIsShowing(true);
             setIsExiting(false);
             setProgress(100);
+            startTimeRef.current = Date.now(); // Reset the timer when showing
         }
         else if (!isVisible && isShowing && !isExiting) {
             handleDismiss();
         }
-    }, [isVisible, isShowing, isExiting]); // Added isShowing and isExiting as dependencies
+    }, [isVisible]); // Only depend on isVisible prop, not internal state
+    const handleDismiss = () => {
+        if (animationFrameRef.current !== null) {
+            cancelAnimationFrame(animationFrameRef.current);
+            animationFrameRef.current = null; // Reset the ref
+        }
+        setIsExiting(true);
+        // Wait for exit animation to complete
+        setTimeout(() => {
+            setIsShowing(false);
+            startTimeRef.current = null; // Reset the timer reference
+            if (onClose)
+                onClose();
+        }, 300);
+    };
     // Auto-dismiss and progress bar logic
     React.useEffect(() => {
         if (duration > 0 && isShowing && !isExiting) {
-            startTimeRef.current = Date.now();
+            if (startTimeRef.current === null) {
+                startTimeRef.current = Date.now();
+            }
             const updateProgress = () => {
                 if (startTimeRef.current === null)
                     return;
@@ -10886,22 +10903,11 @@ const Toast = ({ type, message, duration = 3000, theme = "light", position = "to
             return () => {
                 if (animationFrameRef.current !== null) {
                     cancelAnimationFrame(animationFrameRef.current);
+                    animationFrameRef.current = null;
                 }
             };
         }
-    }, [duration, isShowing, isExiting]); // Added isExiting as dependency
-    const handleDismiss = () => {
-        if (animationFrameRef.current !== null) {
-            cancelAnimationFrame(animationFrameRef.current);
-        }
-        setIsExiting(true);
-        // Wait for exit animation to complete
-        setTimeout(() => {
-            setIsShowing(false);
-            if (onClose)
-                onClose();
-        }, 300);
-    };
+    }, [duration, isShowing, isExiting, handleDismiss]);
     if (!isShowing) {
         return null;
     }
