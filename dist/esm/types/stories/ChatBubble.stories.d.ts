@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import ChatBubble from "../components/ChatBubble";
+declare const meta: Meta<typeof ChatBubble>;
+export default meta;
+type Story = StoryObj<typeof ChatBubble>;
+export declare const LeftWithoutAvatar: Story;
+export declare const RightWithoutAvatar: Story;
+export declare const LeftWithAvatar: Story;
+export declare const RightWithAvatar: Story;
+export declare const AccentVariant: Story;
+export declare const NeutralVariant: Story;
+export declare const LongMessage: Story;
+export declare const ConversationExample: Story;

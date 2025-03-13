@@ -185,4 +185,111 @@ interface ToastProps {
 }
 declare const Toast: React__default.FC<ToastProps>;
 
-export { Accordion, Alert, type AlertProps, Avatar, Button, Card, Input, Loading, Modal, NFTCard, Select, SuccessfulTransactionModal, Swiper, Toast, TokenSwap, WalletConnection };
+interface ChatBubbleProps {
+    /**
+     * The message text to display
+     */
+    message: string;
+    /**
+     * Position of the chat bubble
+     * @default "left"
+     */
+    position?: "left" | "right";
+    /**
+     * Color variant of the bubble
+     * @default "primary"
+     */
+    variant?: "primary" | "secondary" | "accent" | "neutral" | "success" | "warning" | "error";
+    /**
+     * URL for the avatar image
+     */
+    avatar?: string;
+    /**
+     * Additional CSS class names
+     */
+    className?: string;
+    /**
+     * Time the message was sent
+     */
+    timestamp?: string;
+    /**
+     * Name of the message sender
+     */
+    sender?: string;
+    /**
+     * Status of the message (typing, sent, delivered, read)
+     */
+    status?: "typing" | "sent" | "delivered" | "read" | "error";
+    /**
+     * Whether to show the tail on the bubble
+     * @default true
+     */
+    showTail?: boolean;
+    /**
+     * Whether the message contains multimedia (shows a placeholder if true)
+     */
+    hasMedia?: boolean;
+    /**
+     * Optional media URL (image, etc.)
+     */
+    mediaUrl?: string;
+    /**
+     * Optional callback when the bubble is clicked
+     */
+    onClick?: () => void;
+}
+declare const ChatBubble: React__default.FC<ChatBubbleProps>;
+
+interface ProgressBarProps {
+    /**
+     * The value of the progress (0-100)
+     */
+    value: number;
+    /**
+     * Maximum value of the progress
+     * @default 100
+     */
+    max?: number;
+    /**
+     * Minimum value of the progress
+     * @default 0
+     */
+    min?: number;
+    /**
+     * If `true`, the progress bar will show stripe animation
+     * @default false
+     */
+    isAnimated?: boolean;
+    /**
+     * If `true`, the progress will be indeterminate and the `value` prop will be ignored
+     * @default false
+     */
+    isIndeterminate?: boolean;
+    /**
+     * The color scheme of the progress
+     * @default 'blue'
+     */
+    colorScheme?: 'blue' | 'green' | 'yellow' | 'red' | 'purple' | 'gray';
+    /**
+     * The size of the progress bar
+     * @default 'md'
+     */
+    size?: 'xs' | 'sm' | 'md' | 'lg';
+    /**
+     * If `true`, the progress bar will be rounded
+     * @default false
+     */
+    hasStripe?: boolean;
+    /**
+     * If `true`, the progress bar will show its label
+     * @default false
+     */
+    showLabel?: boolean;
+    /**
+     * Additional CSS classes
+     */
+    className?: string;
+}
+declare const ProgressBar: React__default.FC<ProgressBarProps>;
+
+export { Accordion, Alert, type AlertProps, Avatar, Button, Card, ChatBubble, Input, Loading, Modal, NFTCard, ProgressBar, Select, SuccessfulTransactionModal, Swiper, Toast, TokenSwap, WalletConnection };

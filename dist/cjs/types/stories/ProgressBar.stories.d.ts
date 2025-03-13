@@ -1,0 +1,13 @@
+import { Meta, StoryObj } from '@storybook/react';
+import ProgressBar from '../components/ProgressBar';
+declare const meta: Meta<typeof ProgressBar>;
+export default meta;
+type Story = StoryObj<typeof ProgressBar>;
+export declare const Default: Story;
+export declare const WithLabel: Story;
+export declare const Striped: Story;
+export declare const Animated: Story;
+export declare const Indeterminate: Story;
+export declare const CustomColors: Story;
+export declare const Sizes: Story;
+export declare const CustomStyle: Story;

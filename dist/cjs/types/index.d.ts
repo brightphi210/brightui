@@ -14,4 +14,6 @@ export { default as SuccessfulTransactionModal } from './components/SuccessfulTr
 export { default as NFTCard } from './components/NFTCard';
 export { default as TokenSwap } from './components/TokenSwap';
 export { default as Toast } from './components/Toast';
+export { default as ChatBubble } from './components/ChatBubble';
+export { default as ProgressBar } from './components/ProgressBar';
 export type { AlertProps } from './components/Alert/';

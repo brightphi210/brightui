@@ -89,3 +89,84 @@
       opacity: 0;
     }
   }
+
+
+
+
+  @layer components {
+    .chat-bubble-left {
+      position: relative;
+    }
+  
+    .chat-bubble-left::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: -8px;
+      width: 16px;
+      height: 16px;
+      background-color: inherit;
+      border-bottom-right-radius: 15px;
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    }
+  
+    .chat-bubble-right {
+      position: relative;
+    }
+  
+    .chat-bubble-right::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: -8px;
+      width: 16px;
+      height: 16px;
+      background-color: inherit;
+      border-bottom-left-radius: 15px;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+}
+
+
+/* Add these styles to your global CSS or tailwind.css */
+
+@keyframes progress-stripe {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+.bg-stripe {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.animate-progress-stripe {
+  animation: progress-stripe 1s linear infinite;
+}
+
+.animate-progress-indeterminate {
+  animation: progress-indeterminate 1.5s ease infinite;
+}
+  
