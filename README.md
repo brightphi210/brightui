@@ -129,9 +129,9 @@ Beta UI is open-source and licensed under the **MIT License**.
 
 Follow us for updates and announcements:
 
-- 📘 Twitter: [@BetaUI](https://twitter.com/betaui)
-- 📙 GitHub: [Beta UI Repo](https://github.com/yourusername/beta-ui)
-- 📗 Discord: [Join our Community](https://discord.gg/betaui)
+- 📘 Twitter: [@BetaUI](https://x.com/chibuzorphilip7)
+- 📙 GitHub: [Beta UI Repo](https://github.com/brightphi210/brightui)
+- 📗 Telegram: [Join our Community](https://t.me/+i9Xwns8c9qlkYTI0)
 
 ---
 
