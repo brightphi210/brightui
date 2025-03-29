@@ -305,4 +305,15 @@ interface WalletModalProps {
 }
 declare const WalletDisplayModal: React__default.FC<WalletModalProps>;
 
-export { Accordion, Alert, type AlertProps, Avatar, Button, Card, ChatBubble, Input, Loading, Modal, NFTCard, ProgressBar, Select, SuccessfulTransactionModal, Swiper, Toast, TokenSwap, WalletConnection, WalletDisplayModal };
+interface RatingProps {
+    value?: number;
+    max?: number;
+    readOnly?: boolean;
+    size?: "sm" | "md" | "lg";
+    color?: "default" | "primary" | "secondary" | "success" | "warning" | "danger";
+    onChange?: (value: number) => void;
+    className?: string;
+}
+declare const Rating: React.ForwardRefExoticComponent<RatingProps & React.RefAttributes<HTMLDivElement>>;
+
+export { Accordion, Alert, type AlertProps, Avatar, Button, Card, ChatBubble, Input, Loading, Modal, NFTCard, ProgressBar, Rating, Select, SuccessfulTransactionModal, Swiper, Toast, TokenSwap, WalletConnection, WalletDisplayModal };

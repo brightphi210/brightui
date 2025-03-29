@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import CodeBlock from "../components/Code";
+declare const meta: Meta<typeof CodeBlock>;
+export default meta;
+type Story = StoryObj<typeof CodeBlock>;
+export declare const Default: Story;
+export declare const NpmInstall: Story;
+export declare const GitCommands: Story;
+export declare const WithoutDots: Story;
+export declare const WithoutCopyButton: Story;
