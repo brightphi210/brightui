@@ -1,0 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { ProfileCard } from '../components/ProfileCard';
+declare const meta: Meta<typeof ProfileCard>;
+export default meta;
+type Story = StoryObj<typeof ProfileCard>;
+export declare const Default: Story;
+export declare const WithoutBadge: Story;
+export declare const Disconnected: Story;
+export declare const LongName: Story;
+export declare const Mobile: Story;

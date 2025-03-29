@@ -292,4 +292,17 @@ interface ProgressBarProps {
 }
 declare const ProgressBar: React__default.FC<ProgressBarProps>;
 
-export { Accordion, Alert, type AlertProps, Avatar, Button, Card, ChatBubble, Input, Loading, Modal, NFTCard, ProgressBar, Select, SuccessfulTransactionModal, Swiper, Toast, TokenSwap, WalletConnection };
+interface WalletModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+    address: string;
+    balance: string;
+    currency: string;
+    onCopy?: () => void;
+    onDisconnect?: () => void;
+    className?: string;
+    avatarUrl?: string;
+}
+declare const WalletDisplayModal: React__default.FC<WalletModalProps>;
+
+export { Accordion, Alert, type AlertProps, Avatar, Button, Card, ChatBubble, Input, Loading, Modal, NFTCard, ProgressBar, Select, SuccessfulTransactionModal, Swiper, Toast, TokenSwap, WalletConnection, WalletDisplayModal };

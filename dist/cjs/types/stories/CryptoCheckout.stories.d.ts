@@ -1,0 +1,15 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import CryptoCheckout from "../components/CryptoCheckout";
+declare const meta: Meta<typeof CryptoCheckout>;
+export default meta;
+type Story = StoryObj<typeof CryptoCheckout>;
+export declare const Default: Story;
+export declare const Bitcoin: Story;
+export declare const Solana: Story;
+export declare const CustomStyle: Story;
+export declare const LowTimeRemaining: Story;
+export declare const MultipleCheckouts: Story;
+export declare const DarkTheme: Story;
+export declare const CustomAccentColor: Story;
+export declare const DarkWithCustomAccent: Story;
+export declare const ThemeVariants: Story;

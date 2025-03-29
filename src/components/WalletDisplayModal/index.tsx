@@ -1,3 +1,5 @@
+'use client'
+
 import type React from "react"
 import { useState, useEffect } from "react"
 import { FiLogOut } from "react-icons/fi"
@@ -17,7 +19,7 @@ export interface WalletModalProps {
   avatarUrl?: string
 }
 
-const WalletModal: React.FC<WalletModalProps> = ({
+const WalletDisplayModal: React.FC<WalletModalProps> = ({
   isOpen,
   onClose,
   address,
@@ -122,9 +124,9 @@ const WalletModal: React.FC<WalletModalProps> = ({
 
         {/* Wallet balance */}
         <div className="mb-6 text-center">
-          <p className="text-xl text-gray-600">
+          <span className="text-xl text-center text-gray-600">
             {balance} {currency}
-          </p>
+          </span>
         </div>
 
         {/* Action buttons */}
@@ -149,5 +151,5 @@ const WalletModal: React.FC<WalletModalProps> = ({
   )
 }
 
-export default WalletModal
+export default WalletDisplayModal
 

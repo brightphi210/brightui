@@ -17,5 +17,7 @@ export { default as TokenSwap } from './components/TokenSwap'
 export { default as Toast } from './components/Toast'
 export { default as ChatBubble } from './components/ChatBubble'
 export { default as ProgressBar } from './components/ProgressBar'
+export { default as WalletDisplayModal } from './components/WalletDisplayModal'
+export { default as Rating } from './components/Rating'
 
 export type { AlertProps } from './components/Alert/';
